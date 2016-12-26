@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Table {
 	static final int MAXPLAYER = 4;
+	private ArrayList<Card> oneRoundCard;
 	private deck deck;
 	private Player[] allPlayer;
 	private Dealer dealer;
@@ -12,6 +13,7 @@ public class Table {
 		deck= new deck(nDeck);
 		
 	}
+	
 	public void set_player(int pos,Player p){
 		allPlayer[pos]=p;
 		
@@ -50,13 +52,13 @@ public class Table {
 	private void ask_each_player_about_hits() {
 		for (int pos = 0; pos < MAXPLAYER; pos++) {
 			System.out.println(allPlayer[pos].get_name() + "'s cards now: ");
-			allPlayer[pos].printAllCard();
+			allPlayer[pos].PrintAllCard();
 			while (allPlayer[pos].hit_me(this) && allPlayer[pos].getTotalValue() <= 21) {
-				ArrayList<Card> newOneRroundCard = allPlayer[pos].getOneRoundCard();
+				ArrayList<Card> newOneRroundCard =  allPlayer[pos].getOneRoundCard();
 				newOneRroundCard.add(deck.getOneCard(true));
 				System.out.println("Hit! " + allPlayer[pos].get_name() + "'s cards now: ");
 				allPlayer[pos].setOneRoundCard(newOneRroundCard);
-				allPlayer[pos].printAllCard();
+				allPlayer[pos].PrintAllCard();
 			}
 			System.out.println((allPlayer[pos].getTotalValue() > 21 ? "" : "Pass hit!\n") + allPlayer[pos].get_name()
 					+ "'s hit is over!");
@@ -65,7 +67,7 @@ public class Table {
 	private void calculate_chips() {
 		int dealersTotalvalue = dealer.getTotalValue()>21?0:dealer.getTotalValue(), pos = 0;
 		System.out.print("Dealer's card value is " + dealer.getTotalValue() + " ,Cards:");
-		dealer.printAllCard();
+		dealer.PrintAllCard();
 		for (Player players : allPlayer) {
 			int playersTotalvalue = players.getTotalValue()>21?0:players.getTotalValue();
 			System.out.print(players.get_name() + " card value is " + players.getTotalValue());

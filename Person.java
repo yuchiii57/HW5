@@ -44,7 +44,7 @@ public abstract class Person {
 		}
 		return hasAce;
 	}
-	public void printAllCard(){
+	public void PrintAllCard(){
 		for(Card c : oneRoundCard){
 			c.PrintCard();
 		}

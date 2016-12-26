@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player extends Person{
 	private String name="";
 	private int chips;
 	private int bet=0;
@@ -66,10 +66,10 @@ public class Player {
 		System.out.println("Hello, I am " + name + "."); 
 		System.out.println("I have " + chips + " chips.");
 	}
-	public boolean hit_me(Table table) {
-		// TODO Auto-generated method stub
-		return false;
+	
+    
+	
 	}
 
 
-}
+
